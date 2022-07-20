@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('ownload the packages') {
+        stage('Download the packages') {
             steps {
 
-                bat "dotnet restore"
+                bat 'dotnet restore'
 
-                bat "dotnet clean"
+                bat 'dotnet clean'
 
             }
         }
@@ -15,7 +15,7 @@ pipeline {
         stage('Bulid') {
             steps {
 
-                bat "dotnet build"
+                bat 'dotnet build'
             }
         }
     
@@ -23,7 +23,7 @@ pipeline {
         stage('Test') {
             steps {
 
-                bat "dotnet test"
+                bat 'dotnet test'
             }
 
             post {
@@ -37,7 +37,7 @@ pipeline {
         stage('Package') {
             steps {
 
-                bat "dotnet package"
+                bat 'dotnet package'
             }
 
 
