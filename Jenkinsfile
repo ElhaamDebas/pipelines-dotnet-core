@@ -1,13 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Download the packages') {
+        stage('Validate') {
             steps {
 
-                bat 'dotnet restore'
+                sh "mvn validate"
 
-                bat 'dotnet clean'
-
+                sh "mvn clean"
             }
         }
     
@@ -15,7 +14,7 @@ pipeline {
         stage('Bulid') {
             steps {
 
-                bat 'dotnet build'
+                sh "mvn compile"
             }
         }
     
@@ -23,7 +22,7 @@ pipeline {
         stage('Test') {
             steps {
 
-                bat 'dotnet test'
+                sh "mvn test"
             }
 
             post {
@@ -37,13 +36,13 @@ pipeline {
         stage('Package') {
             steps {
 
-                bat 'dotnet package'
+                sh "mvn package"
             }
 
 
             post {
                 success {
-                    archiveArtifacts artifacts: '**/bin/Debug/net6.0/*.dll', followSymlinks: false
+                    archiveArtifacts artifacts: '**/bin/Debug/net6.0/*.dll' , followSymlinks: false
                 }
             }
         }
