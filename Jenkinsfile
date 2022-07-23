@@ -1,13 +1,17 @@
 pipeline {
     agent any
     environment{   
-        AWS_S3_BUCKET = "jenkins-bucket"
-        ARTIFACT_NAME = "hello-world.dll"
-        AWS_ACCESS_KEY_ID     = credentials(' ')
-        AWS_SECRET_ACCESS_KEY = credentials(' ')
-        AWS_EB_APP_NAME = "jenkinsapp"
+        
+        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+
+        AWS_S3_BUCKET = "artefact-bucket-app"
+        ARTEFACT_NAME = "hello-world.war"
+
+        AWS_EB_APP_NAME = ".net-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "jenkinsenv"
+        AWS_EB_ENVIRONMENT = "Netwebapp-env"
+
     }
 
     stages {
