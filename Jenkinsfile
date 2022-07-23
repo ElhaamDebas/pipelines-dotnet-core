@@ -1,13 +1,13 @@
 pipeline {
     agent any
     environment{   
-        AWS_S3_BUCKET = " "
+        AWS_S3_BUCKET = "artefact-bucket-app"
         ARTIFACT_NAME = "hello-world.dll"
-        AWS_ACCESS_KEY_ID     = credentials(' ')
-        AWS_SECRET_ACCESS_KEY = credentials(' ')
-        AWS_EB_APP_NAME = " "
+        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
+        AWS_EB_APP_NAME = "elhaam-.net-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = " "
+        AWS_EB_ENVIRONMENT = "elhaam-Netwebapp-env"
     }
 
     stages {
