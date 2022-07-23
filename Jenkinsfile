@@ -6,11 +6,11 @@ pipeline {
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
 
         AWS_S3_BUCKET = "artefact-bucket-app"
-        ARTEFACT_NAME = "hello-world.war"
+        ARTEFACT_NAME = "hello-world.dll"
 
-        AWS_EB_APP_NAME = ".net-webapp"
+        AWS_EB_APP_NAME = "elhaam.net-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "Netwebapp-env"
+        AWS_EB_ENVIRONMENT = "elhaam-Netwebapp-env"
 
     }
 
