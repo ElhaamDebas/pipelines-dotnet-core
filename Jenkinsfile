@@ -1,13 +1,12 @@
 pipeline {
     agent any
-    environment{   
-        AWS_S3_BUCKET = " "
+    environment{  
         ARTIFACT_NAME = "hello-world.dll"
         AWS_ACCESS_KEY_ID     = credentials(' ')
         AWS_SECRET_ACCESS_KEY = credentials(' ')
-        AWS_EB_APP_NAME = " "
+        AWS_EB_APP_NAME = "jenkins-a1"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = " "
+        AWS_EB_ENVIRONMENT = "jenkins-env1"
     }
 
     stages {
