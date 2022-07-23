@@ -3,7 +3,7 @@ pipeline {
     environment{   
         AWS_S3_BUCKET = "artefact-bucket-app"
         ARTIFACT_NAME = "hello-world.dll"
-       AWS_ACCESS_KEY_ID  = credentials('aws-access-key-id')
+        AWS_ACCESS_KEY_ID  = credentials('aws-access-key-id')
         AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
         AWS_EB_APP_NAME = "elhaam-.net-webapp"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
