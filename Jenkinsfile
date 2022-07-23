@@ -1,17 +1,13 @@
 pipeline {
     agent any
     environment{   
-        
-        AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('aws-secret-access-key')
-
-        AWS_S3_BUCKET = "artefact-bucket-app"
-        ARTEFACT_NAME = "hello-world.dll"
-
-        AWS_EB_APP_NAME = "elhaam.net-webapp"
+        AWS_S3_BUCKET = " "
+        ARTIFACT_NAME = "hello-world.dll"
+        AWS_ACCESS_KEY_ID     = credentials(' ')
+        AWS_SECRET_ACCESS_KEY = credentials(' ')
+        AWS_EB_APP_NAME = " "
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "elhaam-Netwebapp-env"
-
+        AWS_EB_ENVIRONMENT = " "
     }
 
     stages {
@@ -47,7 +43,12 @@ pipeline {
             }
         }
     
-       
+        stage('Publish artfacts to s3') {
+            steps {
+                sh "aws configure set region us-east-1"
+                sh "aws s3 cp ./bin/Debug/net6.0/**.dll s3://$AWS_S3_BUCKET/$ARTIFACT_NAME"
+            }
+        }
 
         stage('Deploy') {
             steps {
