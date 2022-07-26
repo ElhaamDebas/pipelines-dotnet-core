@@ -8,6 +8,9 @@ pipeline {
         AWS_EB_APP_NAME = "dotnet-web-server"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
         AWS_EB_ENVIRONMENT = "Dotnetwebserver-env"
+
+        SONAR_IP = "54.226.50.200"
+        SONAR_TOKEN ="sqp_90a1fed66968a246e178f32f22f7e3190973bc53"  
     }
 
     stages {
@@ -17,6 +20,7 @@ pipeline {
                 
             }
         }
+
 
         stage('Build') {
             steps {
@@ -43,6 +47,15 @@ pipeline {
             }
         }
     
+        stage('Quality Scan'){
+            steps{
+                sh '''
+                dotnet sonarscanner begin /k:"Build-a-.NET-Application-with-Jenkins" /d:sonar.host.url="http://$SONAR_IP"  /d:sonar.login="$SONAR_TOKEN"
+                dotnet build
+                dotnet sonarscanner end /d:sonar.login="SONAR_TOKEN"
+                '''
+            }
+        }
         stage('Publish artfacts to s3') {
             steps {
                 sh "aws configure set region us-east-1"
