@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-      dotnet: 3.1
+      dotnet: 6.0
 
   pre_build:
     on-failure: ABORT
@@ -27,11 +27,11 @@ phases:
     commands:
     - echo Build start on 'date'
     - dotnet publish
-    - mv bin/Debug/net6.0/**.dll helloworld.dll
+    - mv bin/Debug/net6.0/pipelines-dotnet-core.dll ROOT.dll
     - echo Build edns on 'date'
 
 artifacts:
   files:
-    - helloworld.dll
+    - ROOT.dll
   name: dotnet-artifact
 
