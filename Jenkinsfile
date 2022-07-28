@@ -47,15 +47,7 @@ pipeline {
             }
         }
     
-        stage('Quality Scan'){
-            steps{
-                sh '''
-                dotnet sonarscanner begin /k:"Build-a-.NET-Application-with-Jenkins" /d:sonar.host.url="http://$SONAR_IP"  /d:sonar.login="$SONAR_TOKEN"
-                dotnet build
-                dotnet sonarscanner end /d:sonar.login="SONAR_TOKEN"
-                '''
-            }
-        }
+       
         stage('Publish artfacts to s3') {
             steps {
                 sh "aws configure set region us-east-1"
