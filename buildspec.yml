@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-      java: corretto11
+      dotnet: 6.0
 
   pre_build:
     on-failure: ABORT
@@ -27,11 +27,11 @@ phases:
     commands:
     - echo Build start on 'date'
     - dotnet publish
-    - mv target/*.dll ROOT.dll
+    - mv bin/Debug/net6.0/**.dll helloworld.dll
     - echo Build edns on 'date'
 
 artifacts:
   files:
-    - ROOT.dll
+    - helloworld.dll
   name: hello-word-artifact
 
