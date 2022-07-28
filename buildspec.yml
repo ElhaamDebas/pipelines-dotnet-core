@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-       dotnet: 6.0
+       dotnet: 3.1
 
   pre_build:
     on-failure: ABORT
