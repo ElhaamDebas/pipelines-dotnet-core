@@ -10,7 +10,6 @@ phases:
     on-failure: ABORT
     commands:
     - echo Build start on 'date'
-    - dotnet clean
     - dotnet restore
     - echo Build ends on 'date'
 
