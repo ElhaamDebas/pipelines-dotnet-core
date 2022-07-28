@@ -10,23 +10,22 @@ phases:
     on-failure: ABORT
     commands:
     - echo Build start on 'date'
-    - mvn clean
-    - mvn validate
+    - dotnet restore
     - echo Build ends on 'date'
 
   build:
     on-failure: ABORT
     commands:
     - echo Build start on 'date'
-    - mvn compile
-    - mvn test
+    - dotnet build
+    - dotnet test --logger:junit
     - echo Build ends on 'date'
 
   post_build:
     on-failure: ABORT
     commands:
     - echo Build start on 'date'
-    - mvn package
+    - dotnet publish
     - mv target/*.dll ROOT.dll
     - echo Build edns on 'date'
 
