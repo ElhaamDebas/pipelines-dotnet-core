@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORT
     runtime-versions:
-      dotnet: 6.0
+      dotnet: 6.0.302
 
   pre_build:
     on-failure: ABORT
@@ -18,8 +18,8 @@ phases:
     on-failure: ABORT
     commands:
     - echo Build start on 'date'
-    - dotnet build --configuration Release
-    - dotnet test --logger:junit
+    - dotnet build 
+    - dotnet test 
     - echo Build ends on 'date'
 
   post_build:
@@ -33,5 +33,5 @@ phases:
 artifacts:
   files:
     - helloworld.dll
-  name: hello-word-artifact
+  name: dotnet-artifact
 
