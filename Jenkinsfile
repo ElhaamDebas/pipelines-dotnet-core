@@ -7,7 +7,7 @@ pipeline {
         ARTIFACT_NAME = "hello-world.dll"
         AWS_EB_APP_NAME = "dotnet-web-server"
         AWS_EB_APP_VERSION = "${BUILD_ID}"
-        AWS_EB_ENVIRONMENT = "Dotnetwebserver-env-1"
+        AWS_EB_ENVIRONMENT = "Dotnetwebserver-env"
 
         SONAR_IP = "54.226.50.200"
         SONAR_TOKEN ="sqp_90a1fed66968a246e178f32f22f7e3190973bc53"  
